@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+
+<div style="height: 750px;  background-color:#305182 ">
+ <div class="row" style="margin-top: 1px;" > 
+   <div class="col-md-6 offset-md-3" style="border:none; background-color: #5c7dad; border-radius: 10px; height:670px; margin-top: 20px;"> 
+    <hr style="background-color: #f7f8fa">
+     <h1 class="text-center" style="color:#faffff; font-family:Aclonica; font-weight: 400; "> REGISTER <i class="fa fa-registered" aria-hidden="true"></i> 
+     </h1>
+
+     <hr style="background-color: #f7f8fa">
+     <form method="post" class="register" style="color:#fff ; font-size: 25px; font-style: bold; font-family:Aclonica;"> 
+         {% csrf_token  %}
+         {{form.as_p}}
+      <input type="submit" class="btn btn-success" style="float: right; width: 200px;" name="submit" value="Register">
+    </form>
+  </div>
+
+ </div> 
+</div>
+{% endblock%}

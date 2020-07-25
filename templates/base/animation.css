@@ -1,0 +1,45 @@
+/* [BASIC RED BALL] */
+.ball {
+  background: #f45342;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 80px auto 0 auto;
+}
+
+/* [BOUNCE WITH "GRAVITY"] */
+@keyframes gbounce { 
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-50px); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+.gbounce {
+  animation: gbounce 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+/* [SPRING EFFECT] */
+@keyframes spring { 
+  0% {
+    transform: scale(1) translateY(0); 
+  }
+  10% {
+    transform: scale(1.2, 0.6); 
+  }
+  30% { 
+    transform: scale(0.8, 1.1) translateY(-50px); 
+  }
+  50% { 
+    transform: scale(1) translateY(0); 
+  }
+  100% { 
+    transform: translateY(0); 
+  }
+}
+.spring {
+  animation: spring 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}

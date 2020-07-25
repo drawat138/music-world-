@@ -1,0 +1,202 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{% load static %}
+<style>
+.selector{
+  padding-left: 10px;
+  font-size: 17px;
+
+}
+  .selector:hover{
+    background-color:#848785 ;
+    border: none;
+    height: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .anchor:hover{
+    color: white;
+  }
+  .anchor{
+    color:#000;
+    text-decoration: none;
+  }
+
+ .buttonDownload {
+  display: inline-block;
+  position: relative;
+  padding: 10px 25px;
+  
+  background-color: #4CC713;
+  color: white;
+  
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 0.9em;
+  text-align: center;
+  text-indent: 15px;
+}
+
+.buttonDownload:hover {
+  background-color: #333;
+  color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 15px;
+  top: 52%;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+  width: 10px;
+  height: 2px;
+  border-style: solid;
+  border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  margin-top: -7px;
+  
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  border-color: transparent;
+  border-top-color: inherit;
+  
+  animation: downloadArrow 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+  border-color: #4CC713;
+}
+
+.buttonDownload:hover:after {
+  border-top-color: #4CC713;
+  animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+  /* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+  0% {
+    margin-top: -7px;
+    opacity: 1;
+  }
+  
+  0.001% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    margin-top: 0;
+    opacity: 0;
+  }
+} 
+ 
+#music-box:hover{
+  opacity: 0.8;
+
+} 
+</style>
+
+<div class="container">
+<div class="col-md-12" style=" height: 80px; background-color:#070a6e; color: white; text-align: center; ">
+<h1> Instrumental Songs</h1>	
+</div>	
+</div>
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-2" style="border: ridge; width: 100%; height: 600px; background-color: #c6cfc9">
+    <h4 style="padding-top: 10px; text-align: center;"><b> Category </b></h4>
+    <hr style="background-color: grey;">
+  <b>  
+ <div class="selector">
+   <p> <a href="" class="anchor">Top release  </a> </p>
+ </div>
+ <div class="selector">
+   <p> <a href="" class="anchor"> Trending </a></p>
+ </div>
+ <div class="selector">
+   <p> <a href="" class="anchor"> Dhol mix  </a></p>
+ </div>
+  <div class="selector">
+  <p> <a href="" class="anchor"> Single Track  </a></p>
+</div>
+   <div class="selector">
+   <p> <a href="" class="anchor"> Devotional</a></p>
+</div>
+<hr style="background-color: white;">
+<h4 style="padding-top: 10px; text-align: center;"><b> Videos </b></h4>
+<hr style="background-color: white;">
+   <div class="selector">
+     <p> <a href="/movies" class="anchor"> Movies</a></p>
+   </div>
+   <div class="selector">
+     <p> <a href="/videos" class="anchor"> Video Song</a></p>
+   </div>
+   <div class="selector"> 
+      <p> <a href="" class="anchor"> 2020 latest videos</a></p>
+   </div>
+   <div class="selector"> 
+      <p> <a href="" class="anchor"> Wedding songs</a></p>
+   </div>
+</b>
+  </div>
+
+
+<div class="col-md-8" style=" width: 100%;" >
+               {% for song in instrumental  %}
+ <div class="row" style="border: ridge; height: 150px; background-color:#dce0de;" id="music-box">
+
+   <div class="col-sm-2">
+      <img src="{% static 'images/instrumental.jpg'%}" width="100%" height="150px;" style="padding-top:10px;padding-bottom:10px;">
+   </div>
+
+    <div class="col-sm-4" style="width: 100%; color:;">
+                 
+     <h3 style="color: red; padding-top: 5px;">MP3 :  <i class="fa fa-music" aria-hidden="true"></i>   {{song.songname }}</h3>
+      <p style="font-size: 20px;"> <b>time:</b> {{song.time}} min  ||   <b>size:</b>{{song.size}} mb </p>  
+    
+    <p><i class="fa fa-play-circle-o" aria-hidden="true" style="color:red; font-size: 20px;"></i> <b> tags: Instrumental </b></p>
+    
+   </div>
+   <div class="col-sm-4" style="width: 100%; " align="">
+<audio controls style=" height:50px; margin-top:20px;">
+  <source src="{{song.link}}" type="audio/ogg">
+  <source src="{{song.link}}" type="audio/mpeg">
+</audio>
+</div>
+               
+             
+
+ <div class="col-sm-1" style="width: 100%; padding-top: 40px; padding-left: 30px;"> 
+   <a href="{{song.link}}" class="buttonDownload">Download</a>
+ </div>
+   </div>       
+                    {%  endfor  %}
+  </div>
+
+<div class="col-sm-2" style="widows: 100%; border:;height: 500px; background-color: ;"> 
+<img src="{% static 'images/instru.jpg' %}" height="480px;" width="100%" >
+
+
+</div> 
+
+
+ </div>
+                               {% endblock %}
+</div>

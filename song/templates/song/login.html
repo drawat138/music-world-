@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{% load static %}
+
+<div style="background-color:#1d1f1e; height: 700px;">
+<div class="row">
+<div class="col-md-6 offset-md-3" style="margin-top: 50px">
+ <div style="padding:40px;"> 
+   <h3 class="text-center" style="color: white"> 
+   <span style="color:#49ed37;font-size:40px">S</span>ign in </h3>
+   <hr style="height: 1px; background-color: grey; width: 200px;">        
+   <form method="post" style="font-size: 25px; width: 100%; color: white;">
+                  {% csrf_token  %} 
+                   {{form.as_p}}
+    <input type="submit" class="btn btn-success" style="float:right; width: 100px;" name="submit" value="login">
+   </form>
+  </div>
+   <hr style="height: 1px; background-color:#fff; ">
+   <p style="color: white;"><i class="fa fa-check" aria-hidden="true"></i> register first , <a href="/register" style="color:#54e344; font-size: 22px;">  REGISTER</a>    </p>
+   <p style="color: white;"> <i class="fa fa-check" aria-hidden="true"></i> Reset password </p>
+   <p style="color: white;"> <i class="fa fa-check" aria-hidden="true"></i> forget password ?</p>
+ </div>
+</div>
+</div>
+              {% endblock%}
+

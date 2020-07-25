@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{% load static %}
+<style>
+.example_e {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+text-decoration: none;
+}
+.example_e:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+i{
+	padding-left: 10px;
+
+}
+#title{
+	height: 100px;
+	width: 100%; 
+	padding-left:500px ; 
+	text-transform: uppercase;
+	background-color: #3c4744;
+	margin-left: 1px;
+	margin-right: 10px;
+	padding-top: 20px;
+	color: 
+}
+</style>
+<div class="col-md-12" id="title">  
+	<h2 style="font-family: Notable; color: white; font-weight: 900;"> MP4 : <span> {{ video.video_title }} </span>  <i class="fa fa-video-camera" aria-hidden="true" style="color: yellow"></i></h2>
+	  </div>
+                                                                                             
+<div class="jumbotron jumbotron-fluid">  
+<div class="row">
+ <div class="col-md-2">  </div>
+ <div class="col-md-4"> 	
+    <video width="100%" height="400" controls>
+     <source src="{{ video.link }}" type="video/mp4">
+    </video>
+ </div>
+
+ <div class="col-md-3" style="color: black;">
+        <h2><i class="fa fa-youtube-play" aria-hidden="true" style="color: red"></i> {{ video.video_title }} </h2>
+        <h5> <b> Size: {{ video.size }} MB</b> </h5> 
+        <p> <b> Time: {{ video.time }} </b></p> 
+        <p> <i class="fa fa-play-circle" aria-hidden="true" style="color: red; font-size: 20px;"></i> play</p>
+<div class="button_cont" align="center">
+	<a class="example_e" href="{{video.link}}" target="_blank" rel="nofollow noopener">Download</a>
+</div>
+ 
+  <p> You can share : <i class="fa fa-share-alt" aria-hidden="true" style="color: green"></i></p>
+   <p style="margin-left: 100px;"> <i class="fa fa-facebook-official" aria-hidden="true" style="color:blue; background-color:white; font-size: 20px;"></i>
+        <i class="fa fa-whatsapp" aria-hidden="true" style="color:white; background-color: green; font-size: 20px;"></i></p>
+
+
+ </div>
+ 
+ <div class="col-md-3">   
+<img src="{{video.poster.url}}" height="400" width="100%">
+</div>
+               
+         
+
+	
+</div>
+
+</div>
+
+
+
+
+ {%  endblock  %}

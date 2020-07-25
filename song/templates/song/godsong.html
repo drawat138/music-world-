@@ -1,0 +1,135 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{% load static %}
+<style>
+#dummy{
+  height:40px;
+  width: 100%; 
+  border: ridge; 
+  padding-left: 20px
+}	
+#dummy:hover{
+  background-color:#dee0df; 
+}
+.card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+</style>
+<div class="col-md-12" style="height: 50px;width: 100% ;border: ridge; text-align: center; background-color:#a091db "> 
+<h3> featured</h3>
+</div>
+<div class="col-md-12" id="dummy">
+<b>  <a href="">  <p>03 devotional:  Shree Ram, Janki bethe hai.<span style="color: red;">  (mp3) song </span></p> </b> </a>
+ </div>
+ <div class="col-md-12" id="dummy">
+<b>  <a href="">  <p>04 devotional:  Mandir whi banaege<span style="color: red;">  (mp3) song </span></p> </b> </a>
+ </div>
+ <div class="col-md-12" style="height: 50px;width: 100% ;border: ridge; text-align: center; background-color: #06b81a; color: white;"> 
+<h4> devotional/religious updates</h4>
+</div>
+<div class="container-fluid">
+ <div class="col-md-12" style="border: ridge; height: background-color:#1c1919">
+ 
+<div class="col-md-12" style="background-color: #1c1919">	
+ <div class="row">
+   {% for song in godsong  %}
+
+<div class="card" style="width: 18rem; background-color:#e6e4dc; margin-top: 10px; margin-left: 60px; margin-bottom: 10px;" >
+  <img class="card-img-top" src="{{ song.picture.url}}" alt="Card image cap" style="height: 200px">
+  <div class="card-body">
+    <h6 class="card-title" > MP3 :  {{song.title }} <i class="fa fa-music" aria-hidden="true"></i> </h6>
+   
+    <audio controls style=" height:20px; margin-top:20px; width: 200px; border: ridge; border-radius: 50px; color: red;">
+    <source src="{{song.link}}" type="audio/mpeg">
+  </audio>
+    <p class="card-text">  <b>time:</b> {{song.time}} min  ||   <b>size:</b>{{song.size}} mb    </p>
+    <a href="{{song.link}}" class="btn btn-primary">download</a>
+  </div>
+</div>
+
+
+{% endfor  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="col-md-2"></div>
+
+<div class="col-md-8" style=" width: 100%;" >
+
+               {% for song in godsong  %}
+ <div class="row" style="border: ridge; height: 200px; background-color:#dbd7d7;" id="music-box">
+
+   <div class="col-sm-2">
+      <img src="{{ song.picture.url}}" width="100%" height="150px;" style="padding-top:10px;padding-bottom:10px;">
+   </div>
+
+    <div class="col-sm-4" style="width: 100%; color:;">
+                 
+     <h2 style="color: red; padding-top: 5px;">MP3 :  <i class="fa fa-music" aria-hidden="true"></i>   {{song.title }}</h2>
+      <p style="font-size: 20px;"> <b>time:</b> {{song.time}} min  ||   <b>size:</b>{{song.size}} mb </p>  
+    
+    <p><i class="fa fa-play-circle-o" aria-hidden="true" style="color:red; font-size: 20px;"></i> <b> tags: devotional </b></p>
+    
+   </div>
+   <div class="col-sm-4" style="width: 100%; " align="">
+<audio controls style=" height:50px; margin-top:20px; width: 100px;">
+  <source src="{{song.link}}" type="audio/ogg">
+  <source src="{{song.link}}" type="audio/mpeg">
+</audio>
+</div>
+                          
+ <div class="col-sm-1" style="width: 100%; padding-top: 40px; padding-left: 30px;"> 
+   <a href="{{song.link}}" class="buttonDownload">Download</a>
+ </div>
+   </div>       
+                    {%  endfor  %}
+  </div>
+
+
+
+
+<div class="col-md-2"></div>
+</div>	 -->
+</div>
+</div>
+
+
+
+
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+{% endblock %}

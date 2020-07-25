@@ -1,0 +1,143 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{%  load static %}
+ 
+<style>
+.title{
+ font-size:20px; 
+ color: white;
+ 
+ text-decoration: none;
+}
+.title:hover{
+  background-color: grey;
+  color: white;
+}
+
+  * {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 50%;
+  background: #f1f1f1;
+  margin-left: 300px;
+  border-radius: 20px;
+}
+
+form.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.mp3{
+  color:#fff; 
+  text-decoration: none;
+  font-style: bold;
+   padding-left:10px;
+}
+.mp3:hover{
+  color:#e8ede9;
+}
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family:'Teko', sans-serif;
+}
+.shine{
+  position: relative;
+  text-align: center;
+  font-size: 8vmin;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  line-height: .8;
+  background: linear-gradient(90deg, #000 , #fff, #000);
+  background-size: 80%, 100%;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite ;  
+}
+
+@keyframes shine{
+  0% {
+    background-position-x: -500%; 
+     }
+
+ 100% {
+         background-position-x : 500%; 
+     }
+}
+
+</style>
+<div style=" border:ridge;width:100%; height:150px; background-color: #000;" class="texts" > 
+<h1  style=" padding-top:20px; font-size: 100px;" class="shine"> MUSIC WORLD </h1>
+  
+</div>
+
+  
+<div class="container-fluid">
+ <div class="row" style="height: 400px;">   
+ 
+  <div class="col-md-2" style="border: ridge;width:100%; background-color:#141119;">
+   <marquee width="100%" direction="up" behavior="alternate" scrollamount="4" height="490px">    
+                   {%  for artist in artists   %}
+    <a href="  "> <img src="{{ artist.singerimage.url}}" height="250px" width="100%">  </a> 
+                       {% endfor %}     
+   </marquee>  
+  </div> 
+  <div class="col-md-8" 
+  style="border: ridge; padding:20px; font-size: 20px; padding-left: 50px; background-color:#46c42d;height: 500px;" >  
+    <h3 align="center" style="color: #0f0e12;"><i class="fa fa-headphones" aria-hidden="true"></i> MP3 UPDATES</h3>                 
+                            {% for song in songs %}
+   <span style="color: #1804cc; " > <i class="fa fa-music" aria-hidden="true"></i>
+    <a href="/download/{{song.id}} " class="mp3"> <b>{{ song.title }} </b></a> </span>  <br>                           
+                              {% endfor %}
+             
+                       {% for artist in artists %}
+
+   <span style="color:#1804cc;"> <i class="fa fa-music" aria-hidden="true"></i>
+    <a href="" class="mp3"><b>{{ artist.songtitle}}</b></a></span><br>
+                       
+                            {% endfor %}
+  </div>
+  
+  
+  <div class="col-md-2" style="border:ridge; width:100%; background-color:#141119;">
+    <marquee width="100%" direction="down" behavior="alternate" scrollamount="4" height="490px" >    
+         
+                    {%  for movie in movies1  %}
+    <a href="  "> <img src="{{ movie.poster1.url}}" height="250px" width="100%">  </a> 
+                          {% endfor %}    
+
+
+   </marquee>
+  </div> 
+</div>  
+</div>
+</div>
+                         {%   endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base/base.html' %}
+{% block content  %}
+{% load static %}  
+<style>
+.heading{
+	text-align: center;
+
+}	
+.card-title{
+  font-family: Philosopher;
+  font-weight: 700;
+}
+
+.part-2{
+  margin-top: 20px;
+  height: 400px;
+}
+
+.gmd {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  height: 200px;
+  width: 200px;
+  margin: 1rem;
+  position: relative;
+}
+
+.gmd-1 {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.gmd-1:hover {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -ms-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+.menu{
+    margin-left: 5px;
+    height: 600px;
+    width: 100%;
+    border: ridge;
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+</style>
+
+<div class="col-md-12  heading">
+<h2 style="font-family:Ultra; font-weight: 900; "> VIDEO SONGS (HD) 1080</h2>
+</div>
+
+<div class="row"> 
+<div class="col-md-1 menu" > 
+ <br>
+ <h2><b> Latest </b></h2>
+  <a href=" " class="a"> Asur</a> <br>
+  <a href=" " class="a"> Shimla Mirchi </a> <br>
+  <a href=" " class="a">  Bhangra Pa Le </a> <br>
+  <a href=" " class="a"> Darbar  </a> <br>
+  <a href=" " class="a"> Chhapaak  </a> 
+ <br>
+ <br>
+ <h2> <b> Weekly  </b> </h2>
+  <p>  <a href=" " class="a"> TanhaJi: The Warrior </a> </p>
+  <p>  <a href=" " class="a"> Jai Mummy Di  </a> </p>
+   <p> <a href=" " class="a"> Stret Dancer 3D </a> </p>
+   <p> <a href=" " class="a"> Panga  </a> </p>
+ </div>
+
+<div class="col-md-10" style="margin-left: 30px;">
+   <div class="row">           
+                              {% for mp4 in videos %}	
+<div class="card" style="width:15rem; margin:6px; ">
+  <div style="overflow: hidden;" >
+     <a href="">   <img class="card-img-top" src="{{ mp4.poster.url }}" height="400px"> </a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <i class="fa fa-youtube-play" aria-hidden="true" style="background-color:white; color:red;"></i> {{mp4.video_title  }}</h5>
+    <p class="card-text"> {{ mp4.time}} min  || <b> {{mp4.size}} MB </b> </p>
+    <a href="/player/{{mp4.id}}" class="btn btn-primary"> click me </a>
+  </div>
+</div>	 
+                              {% endfor %}
+</div>
+</div>
+ 
+
+</div>
+
+<div class="part-2">
+  
+  <h1 style="margin-left: 60px;"> Top video  playlist </h1>
+<div class="container-fluid"> 
+<div class="row">    
+<div class="col-md-10" style="margin-left: 150px;"> 
+                       {% for mp4 in videos %} 
+<div class="gmd gmd-1">
+<a href="">   <img src="{{mp4.poster.url }}" width="200" height="200"> </a>
+</div>
+                            {%  endfor%}
+
+<div class="gmd gmd-1">
+<a href="">   <img src="{% static 'images/songpic/song1.jpg' %}" width="200" height="200"> </a>
+</div>
+<div class="gmd gmd-1">
+<a href="">   <img src="{% static 'images/songpic/song2.jpg' %}  " width="200" height="200"></a>
+</div>
+<div class="gmd gmd-1">
+<a href=""> <img src="{% static 'images/songpic/song3.jpg'  %}"width="200" height="200"></a>
+</div>
+<div class="gmd gmd-1">
+<a href="">  <img src="{% static 'images/songpic/song4.jpg'  %}"width="200" height="200"></a>
+</div>
+<div class="gmd gmd-1">
+<a href=""> <img src="{% static 'images/songpic/song5.jpg'  %} "width="200" height="200"></a>
+</div>
+<div class="gmd gmd-1">
+<a href=""> <img src="{% static 'images/songpic/song6.jpg'  %}"width="200" height="200"></a>
+</div>
+   </div>
+  </div>
+ </div>
+</div>
+
+
+
+ {%   endblock %}
